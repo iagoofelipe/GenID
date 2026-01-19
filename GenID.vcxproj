@@ -128,7 +128,7 @@
       <AdditionalLibraryDirectories>$(WXWIN)/lib/vc_x64_lib</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir "$(SolutionDir)build"; copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)build"</Command>
+      <Command>mkdir "$(SolutionDir)build"; &amp; copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)build"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
