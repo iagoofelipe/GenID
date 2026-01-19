@@ -44,7 +44,7 @@ namespace genid
         numIdsSizer->AddGrowableCol(1, 1);
         numIdsSizer->Add(setFontPointSize(new wxStaticText(panel, wxID_ANY, "Quantity")));
         
-        spNumIds = new wxSpinCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, 1);
+        spNumIds = new wxSpinCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER, 1);
         numIdsSizer->Add(setFontPointSize(spNumIds), 0, wxEXPAND);
 
         wxButton* btnGen = new wxButton(panel, wxID_ANY, "generate");
@@ -70,6 +70,7 @@ namespace genid
         btnCopy->Bind(wxEVT_BUTTON, &MainWindow::on_btnCopy_clicked, this);
         btnGen->Bind(wxEVT_BUTTON, &MainWindow::on_btnGen_clicked, this);
         btnClear->Bind(wxEVT_BUTTON, &MainWindow::on_btnClear_clicked, this);
+        spNumIds->Bind(wxEVT_TEXT_ENTER, &MainWindow::on_spNumIds_returnPressed, this);
     }
 
     void MainWindow::on_btnCopy_clicked(wxCommandEvent& event)
@@ -89,12 +90,16 @@ namespace genid
         tcListIds->SetValue(ids = stream.str());
         if (cbCopyAfter->IsChecked())
             copy_to_clipboard(ids);
-        
     }
 
     void MainWindow::on_btnClear_clicked(wxCommandEvent& event)
     {
         spNumIds->SetValue(1);
         tcListIds->Clear();
+    }
+
+    void MainWindow::on_spNumIds_returnPressed(wxCommandEvent& event)
+    {
+		on_btnGen_clicked(event);
     }
 }

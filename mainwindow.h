@@ -24,6 +24,7 @@ namespace genid
         void on_btnCopy_clicked(wxCommandEvent& event);
         void on_btnGen_clicked(wxCommandEvent& event);
         void on_btnClear_clicked(wxCommandEvent& event);
+        void on_spNumIds_returnPressed(wxCommandEvent& event);
     };
 
     static wxWindow* setFontPointSize(wxWindow* win, int pointSize = 11);

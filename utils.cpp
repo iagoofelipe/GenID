@@ -7,26 +7,20 @@
 #include <iomanip>
 
 void genid::copy_to_clipboard(const std::string& text) {
-    // Abre o clipboard
     if (!OpenClipboard(nullptr)) return;
     EmptyClipboard();
 
-    // Aloca memória global
     HGLOBAL hGlob = GlobalAlloc(GMEM_MOVEABLE, text.size() + 1);
     if (!hGlob) {
         CloseClipboard();
         return;
     }
 
-    // Copia o texto para a memória
     char* buffer = static_cast<char*>(GlobalLock(hGlob));
     memcpy(buffer, text.c_str(), text.size() + 1);
     GlobalUnlock(hGlob);
-
-    // Define o conteúdo como CF_TEXT
     SetClipboardData(CF_TEXT, hGlob);
 
-    // Fecha o clipboard
     CloseClipboard();
 }
 
