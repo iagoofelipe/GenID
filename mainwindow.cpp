@@ -42,7 +42,7 @@ namespace genid
 
         wxFlexGridSizer* numIdsSizer = new wxFlexGridSizer(3, SPACE, SPACE);
         numIdsSizer->AddGrowableCol(1, 1);
-        numIdsSizer->Add(setFontPointSize(new wxStaticText(panel, wxID_ANY, "Quantity")));
+        numIdsSizer->Add(setFontPointSize(new wxStaticText(panel, wxID_ANY, "Quantity")), 0, wxALIGN_CENTER_VERTICAL);
         
         spNumIds = new wxSpinCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER, 1);
         numIdsSizer->Add(setFontPointSize(spNumIds), 0, wxEXPAND);
@@ -62,7 +62,7 @@ namespace genid
         wxBoxSizer* btnsSizer = new wxBoxSizer(wxHORIZONTAL);
         btnsSizer->AddStretchSpacer();
         btnsSizer->Add(setFontPointSize(btnCopy));
-        btnsSizer->Add(setFontPointSize(btnClear));
+        btnsSizer->Add(setFontPointSize(btnClear), 0, wxLEFT, SPACE);
 
         panelSizer->Add(btnsSizer, 0, wxEXPAND | wxTOP, SPACE);
 
